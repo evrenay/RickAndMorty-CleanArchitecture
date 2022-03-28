@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="charactersUiState"
+            type="com.evren.rickandmorty.ui.CharactersUiState" />
+
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!--<androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvCharacters"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="@{charactersUiState.listVisibility}"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            />-->
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/viewpager"
+            android:visibility="@{charactersUiState.listVisibility}"
+            android:clipChildren="false"
+            android:clipToPadding="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:layout_width="0dp"
+            android:layout_height="0dp" />
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{charactersUiState.progressBarVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Button
+            android:id="@+id/btnRetry"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/retry"
+            android:visibility="@{charactersUiState.errorVisibility}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvError"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@{charactersUiState.getErrorMessage(context)}"
+            android:visibility="@{charactersUiState.errorVisibility}"
+            app:layout_constraintEnd_toEndOf="@+id/btnRetry"
+            app:layout_constraintStart_toStartOf="@+id/btnRetry"
+            app:layout_constraintTop_toBottomOf="@+id/btnRetry"
+            tools:text="Internet Connection Failed" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/unlikeFloating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@android:drawable/arrow_down_float"
+                android:layout_marginBottom="24dp"
+                android:rotation="90"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/superLikeFloating"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
+                android:id="@+id/superLikeFloating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/super_like"
+                app:icon="@android:drawable/ic_menu_help"
+                android:layout_marginBottom="24dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/likeFloating"
+                app:layout_constraintStart_toEndOf="@id/unlikeFloating" />
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/likeFloating"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="24dp"
+                android:rotation="90"
+                android:src="@android:drawable/arrow_up_float"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/superLikeFloating"
+                android:layout_alignParentEnd="true" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

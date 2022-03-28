@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="characterItemUiState"
+            type="com.evren.rickandmorty.ui.CharacterItemUiState" />
+    </data>
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:id="@+id/motionLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layoutDescription="@xml/motion_swipe">
+
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardOne"
+            android:layout_width="270dp"
+            android:layout_height="424dp"
+            android:outlineSpotShadowColor="@android:color/transparent"
+            app:cardBackgroundColor="@color/purple_500"
+            app:cardCornerRadius="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/containerCardOne"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <ImageView
+            android:id="@+id/backButton"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:alpha="0"
+            android:elevation="1dp"
+            android:padding="4dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/imgRick"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:elevation="1dp"
+            android:padding="5dp"
+            imageUrl="@{characterItemUiState.imageUrl}"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintBottom_toTopOf="@id/name"
+            app:layout_constraintEnd_toEndOf="@id/cardOne"
+            app:layout_constraintStart_toStartOf="@id/cardOne"
+            app:layout_constraintTop_toTopOf="@id/cardOne"/>
+        <TextView
+            android:id="@+id/detailButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:elevation="1dp"
+            android:gravity="center_horizontal"
+            android:text="@string/more_detail"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="@id/cardOne"
+            app:layout_constraintEnd_toEndOf="@id/cardOne"
+            app:layout_constraintStart_toStartOf="@id/cardOne" />
+
+        <TextView
+            android:id="@+id/name"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="10dp"
+            android:elevation="1dp"
+            android:text="@{characterItemUiState.name}"
+            android:textColor="@android:color/white"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/status"
+            app:layout_constraintEnd_toEndOf="@id/cardOne"
+            app:layout_constraintStart_toStartOf="@id/cardOne" />
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="15dp"
+            android:elevation="1dp"
+            android:text="@{characterItemUiState.status}"
+            android:textColor="@android:color/white"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toTopOf="@id/description"
+            app:layout_constraintEnd_toEndOf="@id/cardOne"
+            app:layout_constraintStart_toStartOf="@id/cardOne" />
+
+        <TextView
+            android:id="@+id/description"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="24dp"
+            android:elevation="1dp"
+            android:text="@{characterItemUiState.location}"
+            android:textColor="@android:color/white"
+            android:textSize="18sp"
+            app:layout_constraintBottom_toBottomOf="@id/cardOne"
+            app:layout_constraintEnd_toEndOf="@id/cardOne"
+            app:layout_constraintStart_toStartOf="@id/cardOne" />
+
+
+
+
+
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+</layout>
